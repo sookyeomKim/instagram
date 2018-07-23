@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="86a75827-1bf7-4152-bf38-54e15d0fc14e" name="13.125.127.169" url="http://13.125.127.169">
+        <fileTransfer host="13.125.127.169" port="22" privateKey="$USER_HOME$/.ssh/lcventures.pem" rootFolder="/home/ubuntu/InstagramFollowerCrawling" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
