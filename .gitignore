@@ -1,1 +1,30 @@
 # Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gitignore
+.idea/InstagramFollowerCrawling.iml
+.idea/deployment.xml
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/webServers.xml
+.idea/workspace.xml
+ActivityLog/__pycache__/
+CountLog/__pycache__/
+Cronjobs/__pycache__/
+Cronjobs/bot/__pycache__/
+Cronjobs/prevent_text_file/.DS_Store
+Cronjobs/save_images/
+HashTag/__pycache__/
+InstaInfo/__pycache__/
+InstagramFollowerCrawling/__pycache__/
+Message/__pycache__/
+Prevent/__pycache__/
+templates/
