@@ -45,11 +45,11 @@ class GetCount:
         try:
             self.webdriver.get("https://www.instagram.com/" + self.insta_info.insta_account)
             get_follower_count = self.webdriver.find_element_by_css_selector(
-                "html > body > span > section > main > div > header > section > ul > li:nth-of-type(2) > span > span").text
+                "html > body > span > section > main > div > header > section > ul > li:nth-of-type(2) > a > span").text
             get_follow_count = self.webdriver.find_element_by_css_selector(
-                "html > body > span > section > main > div > header > section > ul > li:nth-of-type(3) > span > span").text
+                "html > body > span > section > main > div > header > section > ul > li:nth-of-type(3) > a > span").text
 
-            print(self.insta_info.insta_account + " : " + get_follow_count + " , " + get_follower_count)
+            print(self.insta_info.insta_account + " : " + get_follower_count + " , " + get_follow_count)
 
             count_log = CountLog(follow_count=get_follow_count,
                                  follower_count=get_follower_count,
