@@ -82,27 +82,22 @@ def follow_util(webdriver, insta_info, tag_list):
                             else:
                                 print(insta_info.insta_account + hash_tag + thumbnail_num + " - 팔로우한 이력이 없음")
 
-                            keyword_list = webdriver.find_elements_by_xpath(
+                            keyword_text = webdriver.find_element_by_xpath(
                                 "//article/div[2]/div[1]/ul/li[1]/div/div/div/span")
+                            keyword_text = keyword_text.text
+
+                            print(keyword_text)
 
                             f = open(PREVENT_TEXT_PATH, 'r')
                             get_prevent_keyword = f.readline()
                             f.close()
                             get_prevent_keyword_list = get_prevent_keyword.split(",")
-                            for keyword in keyword_list:
-                                keyword = keyword.text
-                                print(keyword)
-                                break_check = False
-                                if keyword is not "":
-                                    for prevent_keyword in get_prevent_keyword_list:
-                                        if keyword.__contains__(prevent_keyword):
-                                            print(
-                                                insta_info.insta_account + hash_tag + thumbnail_num + "금지어 포착 : " + keyword + ">" + prevent_keyword)
-                                            prevent_check = True
-                                            break_check = True
-                                            break
-                                if break_check:
-                                    break
+                            if keyword_text is not "":
+                                for prevent_keyword in get_prevent_keyword_list:
+                                    if keyword_text.__contains__(prevent_keyword):
+                                        print(
+                                            insta_info.insta_account + hash_tag + thumbnail_num + "금지어 포착 : " + keyword_text + ">" + prevent_keyword)
+                                        prevent_check = True
 
                             if prevent_check:
                                 tab_close(webdriver)
@@ -118,7 +113,6 @@ def follow_util(webdriver, insta_info, tag_list):
                             get_prevent_hash_tag_list = get_prevent_hash_tag.split(",")
                             f.close()
                             for user_hash_tag in (user_hash_tag.text for user_hash_tag in user_hash_tag_list):
-                                print(user_hash_tag)
                                 user_hash_tag = str(user_hash_tag).replace("#", "")
                                 if user_hash_tag in get_prevent_hash_tag_list:
                                     print(
@@ -131,6 +125,7 @@ def follow_util(webdriver, insta_info, tag_list):
                                 continue
                             else:
                                 print(insta_info.insta_account + hash_tag + thumbnail_num + " - 금지 해쉬태그 없음")
+
                         except Exception as e:
                             print(e)
                             webdriver.save_screenshot(
@@ -169,7 +164,8 @@ def follow_util(webdriver, insta_info, tag_list):
                                 true_n_false = [True, False]
                                 if true_n_false[randint(0, 1)]:
                                     try:
-                                        like_button = webdriver.find_element_by_xpath("//div[2]/section[1]/a[1]")
+                                        like_button = webdriver.find_element_by_xpath(
+                                            "//article/div[2]/section/span[1]/button")
                                         like_button.click()
                                     except:
                                         pass
