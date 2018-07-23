@@ -86,8 +86,6 @@ def follow_util(webdriver, insta_info, tag_list):
                                 "//article/div[2]/div[1]/ul/li[1]/div/div/div/span")
                             keyword_text = keyword_text.text
 
-                            print(keyword_text)
-
                             f = open(PREVENT_TEXT_PATH, 'r')
                             get_prevent_keyword = f.readline()
                             f.close()
