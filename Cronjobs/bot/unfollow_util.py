@@ -32,7 +32,7 @@ def unfollow_util(webdriver, webdriver_wait, insta_info):
         # follower_list_scroll_wrap = webdriver.find_element_by_xpath("/html/body/div[4]/div/div[2]/div/div[2]")
         follower_list_scroll_wrap = webdriver.find_element_by_css_selector(
             "html > body > div:nth-of-type(3) > div > div:nth-of-type(2) > div > div:nth-of-type(2)")
-        scroll_bottom_move(webdriver, follower_list_scroll_wrap, 50)
+        scroll_bottom_move(webdriver, follower_list_scroll_wrap, 70)
         print("팔로워 팝업창 스크롤 이동")
 
         sleep(2)
@@ -60,7 +60,7 @@ def unfollow_util(webdriver, webdriver_wait, insta_info):
 
         follow_list_scroll_wrap = webdriver.find_element_by_css_selector(
             "html > body > div:nth-of-type(3) > div > div:nth-of-type(2) > div > div:nth-of-type(2)")
-        scroll_bottom_move(webdriver, follow_list_scroll_wrap, 25)
+        scroll_bottom_move(webdriver, follow_list_scroll_wrap, 35)
         print("팔로우 팝업창 스크롤 이동")
 
         sleep(2)
