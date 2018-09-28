@@ -29,10 +29,9 @@ def unfollow_util(webdriver, webdriver_wait, insta_info):
 
         sleep(2)
 
-        # follower_list_scroll_wrap = webdriver.find_element_by_xpath("/html/body/div[4]/div/div[2]/div/div[2]")
         follower_list_scroll_wrap = webdriver.find_element_by_css_selector(
-            "html > body > div:nth-of-type(3) > div > div:nth-of-type(2) > div > div:nth-of-type(2)")
-        scroll_bottom_move(webdriver, follower_list_scroll_wrap, 70)
+            "body > div:nth-child(15) > div > div > div:nth-of-type(2)")
+        scroll_bottom_move(webdriver, follower_list_scroll_wrap, 50)
         print("팔로워 팝업창 스크롤 이동")
 
         sleep(2)
@@ -59,13 +58,12 @@ def unfollow_util(webdriver, webdriver_wait, insta_info):
         sleep(2)
 
         follow_list_scroll_wrap = webdriver.find_element_by_css_selector(
-            "html > body > div:nth-of-type(3) > div > div:nth-of-type(2) > div > div:nth-of-type(2)")
-        scroll_bottom_move(webdriver, follow_list_scroll_wrap, 35)
+            "body > div:nth-child(15) > div > div > div:nth-of-type(2)")
+        scroll_bottom_move(webdriver, follow_list_scroll_wrap, 25)
         print("팔로우 팝업창 스크롤 이동")
-
         sleep(2)
 
-        follow_list = follow_list_scroll_wrap.find_elements_by_css_selector("li")
+        follow_list = follow_list_scroll_wrap.find_elements_by_css_selector("ul > div > li")
         print("팔로우 리스트 생성")
 
         print(str(insta_info.insta_account) + "\n", len(follow_list))
@@ -78,7 +76,8 @@ def unfollow_util(webdriver, webdriver_wait, insta_info):
                     print(str(insta_info.insta_account) + "언팔 루프 멈춤")
                     break
                 following_user = follow_list.pop()
-                follow_user_account = following_user.find_elements_by_css_selector("a")[1].text
+                follow_user_account = following_user.find_element_by_css_selector(
+                    "div > div > div:nth-of-type(2) > div > a").text
                 if follow_user_account not in follwer_list:
                     get_account = ActivityLog.objects.filter(insta_info=insta_info, account_id=follow_user_account)
                     if get_account.exists():

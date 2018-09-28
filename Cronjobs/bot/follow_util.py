@@ -159,13 +159,14 @@ def follow_util(webdriver, insta_info, tag_list):
                                         sleep(ran_num)
                                 else:
                                     sleep(5)
-                                true_n_false = [True, False]
-                                if true_n_false[randint(0, 1)]:
+                                true_n_false = [True, False, True]
+                                if true_n_false[randint(0, 2)]:
                                     try:
                                         like_button = webdriver.find_element_by_xpath(
                                             "//article/div[2]/section/span[1]/button")
                                         like_button.click()
-                                    except:
+                                    except Exception as e:
+                                        print(e)
                                         pass
                                 follow_button.click()
                                 print("팔로우 함 : " + insta_info.insta_account + hash_tag + thumbnail_num)

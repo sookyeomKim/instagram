@@ -64,22 +64,19 @@ class InstaBot:
                 return self
             print("웹드라이버 셋")
             options = webdriver.ChromeOptions()
-            # options.add_argument('--headless')
-            options.add_argument('--blink-settings=imagesEnabled=false')
-            options.add_argument('--window-size=1366x768')
-            options.add_argument('--disable-gpu')
+            options.add_argument('--headless')
             options.add_argument(
-                "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36")
-            options.add_argument('--lang=ko_KR')
-            options.add_argument('--dns-prefetch-disable')
-            options.add_argument('--no-sandbox')
+                '--no-sandbox')  # sandbox를 사용하지 않는다 보안 이슈가 있어 권고사항이 아니지만 크롤링목적으로 띄우는 브라우저에서는 딱히 무관한 이슈라고나 할까 무튼 헤드리스 동작시키려면 필수 옵션
+            options.add_argument('--disable-gpu')  # gpu를 사용x 윈도우에서는 실행 시 필요한 옵션, for headless
+            options.add_argument('--blink-settings=imagesEnabled=false')  # 이미지 방지
+            options.add_argument('--window-size=1920x3840')
+            options.add_argument("--disable-infobars")  # 정보바 끄기
+            options.add_argument("--disable-extensions")  # 확장기능 끄기
+            options.add_argument("--disable-dev-shm-usage")  # 리소스 제한 문제 끄기
+            options.add_argument('--ignore-certificate-errors')
+            options.add_argument(
+                "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36")
 
-            chrome_prefs = {
-                'intl.accept_languages': 'ko-KR'
-            }
-            options.add_experimental_option('prefs', chrome_prefs)
-
-            #
             self.webdriver = webdriver.Chrome(options=options)
             self.webdriver_wait = WebDriverWait(self.webdriver, self.page_delay)
             print("웹드라이버 셋팅 완료")
